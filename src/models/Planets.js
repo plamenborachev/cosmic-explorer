@@ -20,7 +20,7 @@ const planetSchema = new Schema({
         type: String,
         enum: {
             values: ['Inner', 'Outer', 'Dwarf'],
-            message: '{VALUE} is not supported for type!'
+            message: '\'{VALUE}\' is not supported for type!'
         },
         //required: [true, 'Type is required!'],
     },
@@ -38,7 +38,7 @@ const planetSchema = new Schema({
         type: String,
         enum: {
             values: ['Yes', 'No'],
-            message: '{VALUE} is not supported for rings!'
+            message: '\'{VALUE}\' is not supported for rings!'
         },
         //required: [true, 'Type is required!'],
     },
