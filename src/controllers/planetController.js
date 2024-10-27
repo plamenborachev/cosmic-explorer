@@ -53,7 +53,7 @@ planetController.get('/like/:planetId', isAuth, async (req, res) => {
 
     if (isOwner){
         return res.render('planet/details',
-            { error: `You are owner of ${planet.name} and can not like it!`, planet, isOwner, liked, title: TITLE_DETAILS_PAGE});
+            { error: `You are creator of ${planet.name} and can not like it!`, planet, isOwner, liked, title: TITLE_DETAILS_PAGE});
     }
 
     if (liked){
@@ -67,6 +67,24 @@ planetController.get('/like/:planetId', isAuth, async (req, res) => {
     } catch(err){ 
         console.log(err);
     }    
+});
+
+planetController.get('/delete/:planetId', isAuth, async (req, res) => {
+    const planetId = req.params.planetId;
+    const { planet, isOwner, liked } = await checkOwnerAndLiked(req, res);
+
+    // Check if owner
+    if (!isOwner) {
+        return res.render('planet/details',
+            { planet, isOwner: false, liked, error: `You are not creator of ${planet.name} and cannot delete it!`, title: TITLE_DETAILS_PAGE});
+    }
+
+    try {
+        await planetService.remove(planetId);
+        res.redirect('/planets/catalog');
+    } catch (err) {
+        console.log(err);
+    }
 });
 
 

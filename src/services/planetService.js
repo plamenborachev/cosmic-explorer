@@ -35,7 +35,7 @@ const like = (planetId, userId) => {
     return Planet.findByIdAndUpdate(planetId, { $push: { likedList: userId } });
 };
 
-// const remove = (recipeId) => Recipe.findByIdAndDelete(recipeId);
+const remove = (planetId) => Planet.findByIdAndDelete(planetId);
 
 // const edit = (recipeId, data) => Recipe.findByIdAndUpdate(recipeId, data, {runValidators: true});
 
@@ -47,6 +47,6 @@ export default {
     create,
     getOne,
     like,
-    // remove,
+    remove,
     // edit,
 }
