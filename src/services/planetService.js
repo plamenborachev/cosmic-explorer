@@ -3,29 +3,16 @@ import Planet from "../models/Planets.js";
 const getAll = (filter = {}) => {
     let planetsQuery = Planet.find();
 
-    // if (filter.search) {
-    //     recipesQuery.find({ title: { $regex: filter.search, $options: 'i' } });
-    //     // moviesQuery.regex('title', new RegExp(filter.name, 'i'))
-    // }
+    if (filter.name) {
+        planetsQuery.find({ name: { $regex: filter.name, $options: 'i' } });
+    }
 
-    // if (filter.typeVolcano) {
-    //     recipesQuery.find({ typeVolcano: filter.typeVolcano });
-        // moviesQuery.where('genre').equals(filter.genre.toLowerCase())
-    // }
-
-    // if (filter.year) {
-    //     volcanoesQuery.find({ year: filter.year });
-    //     // moviesQuery.where('year').equals(filter.year);
-    // }
+    if (filter.solarSystem) {
+        planetsQuery.find({ solarSystem: { $regex: filter.solarSystem, $options: 'i' } });
+    }
 
     return planetsQuery;
 };
-
-// const getTopThree = () => Recipe.find().sort({createdAt: -1}).limit(3);
-
-// const getDevicesCreatedByUser = (ownerId) => Device.find({owner: ownerId});
-
-// const getDevicesPreferredByUser = (userId) => Device.find({ preferredList: userId});
 
 const create = (planet, ownerId) => Planet.create({ ...planet, owner: ownerId });
 
@@ -41,9 +28,6 @@ const edit = (planetId, data) => Planet.findByIdAndUpdate(planetId, data, {runVa
 
 export default {
     getAll,
-    // getTopThree,
-    // getDevicesCreatedByUser,
-    // getDevicesPreferredByUser,
     create,
     getOne,
     like,

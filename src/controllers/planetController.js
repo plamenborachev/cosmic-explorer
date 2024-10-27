@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { isAuth } from "../middlewares/authMiddleware.js";
-import { TITLE_CATALOG_PAGE, TITLE_CREATE_PAGE, TITLE_DETAILS_PAGE, TITLE_EDIT_PAGE } from "../config/constants.js";
+import { TITLE_CATALOG_PAGE, TITLE_CREATE_PAGE, TITLE_DETAILS_PAGE, TITLE_EDIT_PAGE, TITLE_SEARCH_PAGE } from "../config/constants.js";
 import planetService from "../services/planetService.js";
 import { getErrorMessage } from "../utils/errorUtils.js";
 
@@ -116,6 +116,13 @@ planetController.post('/edit/:planetId', isAuth, async (req, res) => {
         const errorMessage = getErrorMessage(err);
         return res.render('planet/edit', { error: errorMessage, planet: planetData, title: TITLE_EDIT_PAGE});
     }
+});
+
+planetController.get('/search', async (req, res) => {
+    const filter = req.query;
+    // console.log(filter);
+    const planets = await planetService.getAll(filter).lean();
+    res.render('planet/search', { planets, filter, title: TITLE_SEARCH_PAGE});
 });
 
 
