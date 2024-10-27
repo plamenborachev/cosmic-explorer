@@ -46,7 +46,7 @@ const planetSchema = new Schema({
         type: String,
         required: [true, 'Description is required!'],
         minLength: [10, 'The Description should be between 10 and 100 characters long, got \'{VALUE}\'!'],
-        minLength: [100, 'The Description should be between 10 and 100 characters long, got \'{VALUE}\'!'],
+        maxLength: [100, 'The Description should be between 10 and 100 characters long, got \'{VALUE}\'!'],
     },
     image: {
         type: String,
