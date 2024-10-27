@@ -7,10 +7,6 @@ homeController.get('/', (req, res) => {
     res.render('home', {title: TITLE_HOME_PAGE});
 });
 
-// homeController.get('/about', (req, res) => {
-//     res.render('home/about', {title: 'TechStore - About Us'});
-// });
-
 //to test authMiddleware
 // homeController.get('/authorized', (req, res) => {
 //     res.send(req.user);

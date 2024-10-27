@@ -28,16 +28,16 @@ authController.get('/login', isGuest, (req, res) => {
 });
 
 authController.post('/login', isGuest, async (req, res) => {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
     try {
-        const token = await authService.login(email, password);
+        const token = await authService.login(username, password);
         // console.log(token);
         res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
         res.redirect('/');
     } catch(err){
         const error = getErrorMessage(err);
-        res.render('auth/login', {title: TITLE_LOGIN_PAGE, email, error});
+        res.render('auth/login', {title: TITLE_LOGIN_PAGE, username, error});
     }    
 });
 

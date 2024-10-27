@@ -8,6 +8,7 @@ export const JWT_SECRET = '98132hfsdiasdfvgweuhf874o2q3hfb420f9udias08u1213';
 export const AUTH_COOKIE_NAME = 'auth';
 
 //TODO change pages titles
-export const TITLE_HOME_PAGE = 'Home Cooking Recipes';
-export const TITLE_LOGIN_PAGE = 'Login - Home Cooking Recipes';
-export const TITLE_REGISTER_PAGE = 'Register - Home Cooking Recipes';
+export const TITLE_HOME_PAGE = 'Cosmic Explorer';
+export const TITLE_ERROR_PAGE = '404 - Page Not Found';
+export const TITLE_LOGIN_PAGE = 'Login';
+export const TITLE_REGISTER_PAGE = 'Register';

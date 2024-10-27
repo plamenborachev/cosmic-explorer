@@ -20,17 +20,17 @@ const register = async (username, email, password, rePassword) => {
     return generateToken(newUser);
 }
 
-const login = async (email, password) => {
-    const user = await User.findOne({ email });
+const login = async (username, password) => {
+    const user = await User.findOne({ username });
 
     if (!user) {
-        throw new Error('Invalid user or password');
+        throw new Error('Invalid username or password!');
     }
 
     const isValid = await bcrypt.compare(password, user.password);
 
     if (!isValid) {
-        throw new Error('Invalid user or password');
+        throw new Error('Invalid username or password!');
     }
 
     return generateToken(user);
