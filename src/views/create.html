@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Recipe - Home Cooking Recipes</title>
-    <link rel="stylesheet" href="./styles/styles.css">
+    <title>Add New Planet</title>
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 
 <body>
@@ -13,40 +13,62 @@
         <nav>
             <ul>
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Recipes</a></li>
+                <li><a href="#">Catalog</a></li>
                 <li><a href="#">Search</a></li>
-                <li><a href="#">Add Recipe</a></li>
                 <li><a href="#">Login</a></li>
                 <li><a href="#">Register</a></li>
+                <li><a href="#">Create</a></li>
                 <li><a href="#">Logout</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section class="form-container">
-            <h2>Create Recipe</h2>
-            <form action="#">
-                <label for="title">Recipe Title:</label>
-                <input type="text" id="title" name="">
+        <div class="error-containers">
+            <p>Error</p>
+        </div>
 
-                <label for="description">Description:</label>
-                <textarea id="description" name=""></textarea>
+        <form class="planet-form">
+            <label for="name">Name of Planet:</label>
+            <input type="text" id="name" name="">
 
-                <label for="ingredients">Ingredients:</label>
-                <textarea id="ingredients" name=""></textarea>
+            <label for="age">Age (in billion years):</label>
+            <input type="number" id="age" name="">
 
-                <label for="instructions">Instructions:</label>
-                <textarea id="instructions" name=""></textarea>
+            <label for="solarSystem">Solar System:</label>
+            <input type="text" id="solarSystem" name="">
 
-                <label for="image">Image URL:</label>
-                <input type="url" id="image" name="">
+            <label for="type">Type:</label>
+            <select id="type" name="">
+                <option value="---" selected>---</option>
+                <option value="Inner">Inner</option>
+                <option value="Outer">Outer</option>
+                <option value="Dwarf">Dwarf</option>
+            </select>
 
-                <button type="submit">Create Recipe</button>
-            </form>
-        </section>
+            <label for="moons">Moons (count):</label>
+            <input type="number" id="moons" name="">
+
+            <label for="size">Size (in km):</label>
+            <input type="number" id="size" name="">
+
+            <label for="rings">Rings:</label>
+            <select id="rings" name="">
+                <option value="---" selected>---</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="" rows="4"></textarea>
+
+            <label for="image">Image URL:</label>
+            <input type="url" id="image" name="">
+
+            <button type="submit">Add Planet</button>
+        </form>
     </main>
     <footer>
-        <p>&copy; 2024 Home Cooking Recipes. All rights reserved.</p>
+        <p>© 2024 Space Explorers. All rights reserved.</p>
     </footer>
 </body>
 
