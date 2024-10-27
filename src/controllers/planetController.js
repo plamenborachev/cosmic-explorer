@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { isAuth } from "../middlewares/authMiddleware.js";
-import { TITLE_CATALOG_PAGE, TITLE_CREATE_PAGE, TITLE_DETAILS_PAGE } from "../config/constants.js";
+import { TITLE_CATALOG_PAGE, TITLE_CREATE_PAGE, TITLE_DETAILS_PAGE, TITLE_EDIT_PAGE } from "../config/constants.js";
 import planetService from "../services/planetService.js";
 import { getErrorMessage } from "../utils/errorUtils.js";
 
@@ -87,7 +87,36 @@ planetController.get('/delete/:planetId', isAuth, async (req, res) => {
     }
 });
 
+planetController.get('/edit/:planetId', isAuth, async (req, res) => {
+    const { planet, isOwner, liked } = await checkOwnerAndLiked(req, res);
 
+    if (!isOwner) {
+        return res.render('planet/details',
+            { planet, isOwner: false, liked, error: `You are not creator of ${planet.name} and cannot edit it!`, title: TITLE_DETAILS_PAGE});
+    }  
+
+    res.render('planet/edit', { planet, title: TITLE_EDIT_PAGE});
+});
+
+planetController.post('/edit/:planetId', isAuth, async (req, res) => {
+    const planetData = req.body;
+    const planetId = req.params.planetId;
+
+    const { planet, isOwner, liked } = await checkOwnerAndLiked(req, res);
+
+    if (!isOwner) {
+        return res.render('planet/details',
+            { planet, isOwner: false, liked, error: `You are not creator of ${planet.name} and cannot edit it!`, title: TITLE_DETAILS_PAGE});
+    }  
+
+    try {
+        await planetService.edit(planetId, planetData);
+        res.redirect(`/planets/details/${planetId}`);
+    } catch (err) {
+        const errorMessage = getErrorMessage(err);
+        return res.render('planet/edit', { error: errorMessage, planet: planetData, title: TITLE_EDIT_PAGE});
+    }
+});
 
 
 async function checkOwnerAndLiked(req, res) {

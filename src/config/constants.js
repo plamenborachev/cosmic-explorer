@@ -16,7 +16,7 @@ export const TITLE_REGISTER_PAGE = 'Register';
 export const TITLE_CREATE_PAGE = 'Add New Planet';
 export const TITLE_CATALOG_PAGE = 'Planet Catalog';
 export const TITLE_DETAILS_PAGE = 'Planet Details';
-// export const TITLE_EDIT_PAGE = 'Edit Recipe - Home Cooking Recipes';
+export const TITLE_EDIT_PAGE = 'Edit Planet';
 // export const TITLE_SEARCH_PAGE = 'Search Recipes - Home Cooking Recipes';
 
 //TODO: delete comments

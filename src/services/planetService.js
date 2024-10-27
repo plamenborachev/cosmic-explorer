@@ -37,7 +37,7 @@ const like = (planetId, userId) => {
 
 const remove = (planetId) => Planet.findByIdAndDelete(planetId);
 
-// const edit = (recipeId, data) => Recipe.findByIdAndUpdate(recipeId, data, {runValidators: true});
+const edit = (planetId, data) => Planet.findByIdAndUpdate(planetId, data, {runValidators: true});
 
 export default {
     getAll,
@@ -48,5 +48,5 @@ export default {
     getOne,
     like,
     remove,
-    // edit,
+    edit,
 }
