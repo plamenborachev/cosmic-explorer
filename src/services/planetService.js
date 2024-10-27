@@ -29,14 +29,11 @@ const getAll = (filter = {}) => {
 
 const create = (planet, ownerId) => Planet.create({ ...planet, owner: ownerId });
 
-// const getOne = (recipeId) => Recipe.findById(recipeId).populate('recommendList');
+const getOne = (planetId) => Planet.findById(planetId).populate('likedList');
 
-// const recommend = (recipeId, userId) => {
-//     // const movie = await Movie.findById(movieId);
-//     // movie.casts.push(castId);
-//     // return movie.save();
-//     return Recipe.findByIdAndUpdate(recipeId, { $push: { recommendList: userId } });
-// };
+const like = (planetId, userId) => {
+    return Planet.findByIdAndUpdate(planetId, { $push: { likedList: userId } });
+};
 
 // const remove = (recipeId) => Recipe.findByIdAndDelete(recipeId);
 
@@ -48,8 +45,8 @@ export default {
     // getDevicesCreatedByUser,
     // getDevicesPreferredByUser,
     create,
-    // getOne,
-    // recommend,
+    getOne,
+    like,
     // remove,
     // edit,
 }
